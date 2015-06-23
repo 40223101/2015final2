@@ -1485,7 +1485,7 @@ def index(self, filepath):
 </t>
 <t tx="2015.20150623090701.1">@cherrypy.expose
 # N 為齒數, M 為模數, P 為壓力角
-def w17(self, N=20, N1=10, N2=30, N3=10, N4=20, N5=30, N6=30 , N7=15 ,M=5, P=15):
+def w17(self, N=15, N1=24 ,M=5, P=15):
     outstring = '''
 &lt;!DOCTYPE html&gt; 
 &lt;html&gt;
@@ -1530,7 +1530,7 @@ brython();
 </t>
 <t tx="2015.20150623090709.1">@cherrypy.expose
 # N 為齒數, M 為模數, P 為壓力角
-def w17_test(self, N=20, N1=10, N2=30, N3=10, N4=20, N5=30, N6=30 , N7=15 , M=15, P=15):
+def w17_test(self, N=15, N1=24, M=15, P=15):
     outstring = '''
 &lt;!DOCTYPE html&gt; 
 &lt;html&gt;
