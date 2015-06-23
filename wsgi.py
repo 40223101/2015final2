@@ -1160,7 +1160,7 @@ class Hello(object):
 
     模數:'''+str(M)+'''<output name=M for=str(M)><br />
     壓力角:'''+str(P)+'''<output name=P for=str(P)><br />
-    齒數比:'''+str(N)+''':'''+str(N1)+''':'''+str(N2)+''':'''+str(N3)+''':'''+str(N4)+''':'''+str(N5)+''':'''+str(N6)+''':'''+str(N7)+'''<br />
+    齒數比:'''+str(N)+''':'''+str(N1)+'''<br />
 
     <!-- 以下為 canvas 畫圖程式 -->
     <script type="text/python">

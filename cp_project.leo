@@ -1549,7 +1549,7 @@ def w17_test(self, N=15, N1=24, M=15, P=15):
 
 模數:'''+str(M)+'''&lt;output name=M for=str(M)&gt;&lt;br /&gt;
 壓力角:'''+str(P)+'''&lt;output name=P for=str(P)&gt;&lt;br /&gt;
-齒數比:'''+str(N)+''':'''+str(N1)+''':'''+str(N2)+''':'''+str(N3)+''':'''+str(N4)+''':'''+str(N5)+''':'''+str(N6)+''':'''+str(N7)+'''&lt;br /&gt;
+齒數比:'''+str(N)+''':'''+str(N1)+'''&lt;br /&gt;
 
 &lt;!-- 以下為 canvas 畫圖程式 --&gt;
 &lt;script type="text/python"&gt;
