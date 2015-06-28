@@ -1137,6 +1137,21 @@ class Hello(object):
             outstring+=''' <option value="'''+str(j)+'''">'''+str(j)+'''</option>'''
         outstring+='''
        </select><br/>
+       第5齒數:<br />
+        <select name="N4">
+        '''
+        for j in range(15,86):
+            outstring+=''' <option value="'''+str(j)+'''">'''+str(j)+'''</option>'''
+        outstring+='''
+       </select><br/>
+    第6齒數:<br />
+        <select name="N5">
+        '''
+        
+        for j in range(15,86):
+            outstring+=''' <option value="'''+str(j)+'''">'''+str(j)+'''</option>'''
+        outstring+='''
+       </select><br/>
     模數  :<input type=text name=M value='''+str(M)+'''><br />
     壓力角:<input type=text name=P value = '''+str(P)+'''><br />
     <input type=submit value=畫出正齒輪輪廓>
@@ -1174,10 +1189,12 @@ class Hello(object):
     第2齒數:'''+str(N1)+'''<output name=N1 for=str(N1)><br />
     第3齒數:'''+str(N2)+'''<output name=N2 for=str(N2)><br />
     第4齒數:'''+str(N3)+'''<output name=N3 for=str(N3)><br />
+    第5齒數:'''+str(N4)+'''<output name=N4 for=str(N2)><br />
+    第6齒數:'''+str(N5)+'''<output name=N5 for=str(N3)><br />
 
     模數:'''+str(M)+'''<output name=M for=str(M)><br />
     壓力角:'''+str(P)+'''<output name=P for=str(P)><br />
-    齒數比:'''+str(N)+''':'''+str(N1)+''':'''+str(N2)+''':'''+str(N3)+'''<br />
+    齒數比:'''+str(N)+''':'''+str(N1)+''':'''+str(N2)+''':'''+str(N3)+''':'''+str(N4)+''':'''+str(N5)+'''<br />
 
     <!-- 以下為 canvas 畫圖程式 -->
     <script type="text/python">
@@ -1208,6 +1225,10 @@ class Hello(object):
     n_g3 ='''+str(N2)+'''
     # 第4齒輪齒數
     n_g4 ='''+str(N3)+'''
+    # 第5齒輪齒數
+    n_g5 ='''+str(N4)+'''
+    # 第6齒輪齒數
+    n_g6 ='''+str(N5)+'''
 
 
     # 計算兩齒輪的節圓半徑
@@ -1215,6 +1236,8 @@ class Hello(object):
     rp_g2 = m*n_g2/2
     rp_g3 = m*n_g3/2
     rp_g4 = m*n_g4/2
+    rp_g5 = m*n_g5/2
+    rp_g6 = m*n_g6/2
 
     # 繪圖第1齒輪的圓心座標
     x_g1 = 400
@@ -1231,6 +1254,13 @@ class Hello(object):
     x_g4 = x_g3
     y_g4 = y_g3 + rp_g3+rp_g4
 
+    # 第5齒輪的圓心座標
+    x_g5 = x_g4+ rp_g4+rp_g5
+    y_g5 = y_g4
+
+    # 第6齒輪的圓心座標
+    x_g6 = x_g5
+    y_g6 = y_g5 + rp_g5+rp_g6
 
 
     # 將第1齒輪順時鐘轉 90 度
@@ -1295,7 +1325,36 @@ class Hello(object):
     spur.Spur(ctx).Gear(x_g4, y_g4, rp_g4, n_g4, pa, "black")
     ctx.restore()
 
+    # 將第5齒輪順時鐘轉 90 度
+    # 使用 ctx.save() 與 ctx.restore() 以確保各齒輪以相對座標進行旋轉繪圖
 
+    ctx.font = "10px Verdana";
+    ctx.fillText("40223117",x_g5-20, y_g5-10);
+
+    ctx.save()
+    # translate to the origin of second gear
+    ctx.translate(x_g5, y_g5)
+    # rotate to engage
+    ctx.rotate(-pi/2-pi/n_g5+(pi/2+pi/n_g4)*n_g4/n_g5)
+    # put it back
+    ctx.translate(-x_g5, -y_g5)
+    spur.Spur(ctx).Gear(x_g5, y_g5, rp_g5, n_g5, pa, "blue")
+    ctx.restore()
+
+    # 將第6齒輪逆時鐘轉 90 度之後, 再多轉一齒, 以便與第1齒輪進行囓合
+
+    ctx.font = "10px Verdana";
+    ctx.fillText("40223117李曜州",x_g6-20, y_g6-10);
+
+    ctx.save()
+    # translate to the origin of second gear
+    ctx.translate(x_g6, y_g6)
+    # rotate to engage
+    ctx.rotate(-pi/n_g6+(-pi/2+pi/n_g5)*n_g5/n_g6-(pi/2+pi/n_g4)*n_g4/n_g6)
+    # put it back
+    ctx.translate(-x_g6, -y_g6)
+    spur.Spur(ctx).Gear(x_g6, y_g6, rp_g6, n_g6, pa, "black")
+    ctx.restore()
 
 
     </script>
